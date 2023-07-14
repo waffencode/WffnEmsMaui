@@ -16,17 +16,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
+    - name: Cache dotnet
+      id: cache-dotnet
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.DOTNET_INSTALL_DIR }}
+        key: ${{ runner.os }}-dotnet-7
+        restore-keys: ${{ runner.os }}-dotnet-7
+    - name: Install dotnet
+      if: ${{ steps.cache-dotnet.outputs.cache-hit != 'true' }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
+    - name: Install MAUI Workloads
+      if: ${{ steps.cache-dotnet.outputs.cache-hit != 'true' }}
+      run: |
+        dotnet workload install maui-windows --ignore-failed-sources
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
       with:
         vs-prerelease: true
-    - name: Install MAUI Workloads
-      run: |
-        dotnet workload install maui-windows --ignore-failed-sources
     - name: Restore dependencies
       run: dotnet restore
     - name: Build MAUI Windows

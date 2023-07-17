@@ -44,4 +44,4 @@ jobs:
     - name: Build MAUI Windows
       run: msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -p:RestorePackages=false -p:TargetFramework=net7.0-windows10.0.19041.0
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal

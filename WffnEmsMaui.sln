@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WffnEmsMaui", "WffnEmsMaui\WffnEmsMaui.csproj", "{EC1DD573-46AA-4729-89F3-1BCD2328A168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WffnEmsMaui.Domain", "WffnEmsMaui.Domain\WffnEmsMaui.Domain.csproj", "{E6D492AC-5574-4889-96E2-D7809E5987FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WffnEmsMaui.Domain", "WffnEmsMaui.Domain\WffnEmsMaui.Domain.csproj", "{E6D492AC-5574-4889-96E2-D7809E5987FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WffnEmsMaui.Test", "WffnEmsMaui.Test\WffnEmsMaui.Test.csproj", "{A73FABEE-0262-4F3B-97AE-7C81A70112CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{E6D492AC-5574-4889-96E2-D7809E5987FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6D492AC-5574-4889-96E2-D7809E5987FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6D492AC-5574-4889-96E2-D7809E5987FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73FABEE-0262-4F3B-97AE-7C81A70112CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73FABEE-0262-4F3B-97AE-7C81A70112CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73FABEE-0262-4F3B-97AE-7C81A70112CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73FABEE-0262-4F3B-97AE-7C81A70112CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

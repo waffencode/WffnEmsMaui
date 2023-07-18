@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace WffnEmsMaui.Domain;
 
@@ -13,19 +14,36 @@ public class Employee
         set
         {
             // Regex for name which starts with a capital, e.g. "Test".
-            if (Regex.IsMatch(value, "^[A-Z]+[\\s|-]?[a-zA-Z]+[\\s|-]?[a-zA-Z]+$"))
+            if (Regex.IsMatch(value, "^[A-Z]+[\\s|-]?[a-z]+[\\s|-]?[a-z]+$"))
             {
                 _name = value;
             }
             else
             {
-                throw new ArgumentException("Invalid name.");
+                throw new FormatException("Invalid name.");
             }
         }
     }
 
-    public string Surname { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
+    private string _surname;
+    public string Surname
+    {
+        get => _surname;
+        set
+        {
+            // Regex for surname which starts with a capital, e.g. "Test".
+            if (Regex.IsMatch(value, "^[A-Z]+[\\s|-]?[a-z]+[\\s|-]?[a-z]+$"))
+            {
+                _surname = value;
+            }
+            else
+            {
+                throw new FormatException("Invalid surname.");
+            }
+        }
+    }
+
+    public MailAddress Email { get; set; }
     public string Phone { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
 }

@@ -23,7 +23,12 @@ namespace WffnEmsMaui.Test
         public void ShouldThrowExceptionForInvalidName()
         {
             Employee employee = new();
-            var exception = Record.Exception(() => ChangeEmployeeName(employee, "test"));
+
+            Exception? exception = Record.Exception(() => ChangeEmployeeName(employee, "test"));
+            Assert.NotNull(exception);
+            exception = Record.Exception(() => ChangeEmployeeName(employee, "tEsT"));
+            Assert.NotNull(exception);
+            exception = Record.Exception(() => ChangeEmployeeName(employee, "TesT"));
             Assert.NotNull(exception);
         }
 
@@ -40,6 +45,11 @@ namespace WffnEmsMaui.Test
         private static void ChangeEmployeeName(Employee employee, string name)
         {
             employee.Name = name;
+        }
+
+        private static void ChangeEmployeeSurname(Employee employee, string surname)
+        {
+            employee.Surname = surname;
         }
     }
 }

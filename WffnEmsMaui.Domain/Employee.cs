@@ -1,5 +1,4 @@
 ﻿using System.Net.Mail;
-using System.Text.RegularExpressions;
 
 namespace WffnEmsMaui.Domain;
 
@@ -22,6 +21,13 @@ public class Employee
     }
 
     public MailAddress Email { get; set; }
-    public string Phone { get; set; } = string.Empty;
+
+    private string _phone;
+    public string Phone
+    {
+        get => _phone;
+        set => _phone = (Validator.IsValidPhoneNumber(value)) ? value : throw new FormatException("Invalid phone number.");
+    }
+
     public string Address { get; set; } = string.Empty;
 }

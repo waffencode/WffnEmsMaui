@@ -34,5 +34,20 @@ namespace WffnEmsMaui.Test
             Assert.False(Validator.IsValidEmail("example.com"));
             Assert.False(Validator.IsValidEmail("example@.com"));
         }
+
+        [Fact]
+        public void ShouldReturnTrueOnValidPhoneNumber()
+        {
+            Assert.True(Validator.IsValidPhoneNumber("+79008001010"));
+        }
+
+        [Fact]
+        public void ShouldReturnFalseOnInvalidPhoneNumber()
+        {
+            Assert.False(Validator.IsValidPhoneNumber("+79008001f10"));
+            Assert.False(Validator.IsValidPhoneNumber("79008001010"));
+            Assert.False(Validator.IsValidPhoneNumber("+7900800101"));
+            Assert.False(Validator.IsValidPhoneNumber("+79008001010798"));
+        }
     }
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WffnEmsMaui", "WffnEmsMaui\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WffnEmsMaui.Domain", "WffnEmsMaui.Domain\WffnEmsMaui.Domain.csproj", "{E6D492AC-5574-4889-96E2-D7809E5987FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WffnEmsMaui.Test", "WffnEmsMaui.Test\WffnEmsMaui.Test.csproj", "{A73FABEE-0262-4F3B-97AE-7C81A70112CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WffnEmsMaui.Test", "WffnEmsMaui.Test\WffnEmsMaui.Test.csproj", "{A73FABEE-0262-4F3B-97AE-7C81A70112CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

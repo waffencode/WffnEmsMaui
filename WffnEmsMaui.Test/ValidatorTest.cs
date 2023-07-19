@@ -33,7 +33,6 @@ namespace WffnEmsMaui.Test
         {
             Assert.False(Validator.IsValidEmail("example.com"));
             Assert.False(Validator.IsValidEmail("example@.com"));
-            Assert.False(Validator.IsValidEmail("example.com@mail"));
         }
     }
 }

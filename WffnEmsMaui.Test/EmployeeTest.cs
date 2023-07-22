@@ -1,3 +1,4 @@
+using Netizine.Enums;
 using System.Net.Mail;
 using WffnEmsMaui.Domain;
 
@@ -117,6 +118,24 @@ public class EmployeeTest
             var exception = Record.Exception(() => ChangeEmployeePhoneNumber(employee, number));
             Assert.NotNull(exception);
         }
+    }
+
+    [Fact]
+    public void ShouldAcceptValidAddress()
+    {
+        Address address = new()
+        {
+            Country = Country.UnitedStatesOfAmerica,
+            State = "California",
+            City = "Los Angeles",
+            PostalCode = "000000",
+            Street = "Example st.",
+            House = "0",
+            Apartment = "0"
+        };
+        Employee employee = new();
+        employee.Address = address;
+        Assert.Equal(address, employee.Address);
     }
 
     private static void ChangeEmployeeName(Employee employee, string name)

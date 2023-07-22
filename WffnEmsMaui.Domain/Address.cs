@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Netizine.Enums;
+﻿using Netizine.Enums;
 
 namespace WffnEmsMaui.Domain;
 
@@ -12,4 +11,9 @@ public struct Address
     public string Street { get; set; }
     public string House { get; set; }
     public string Apartment { get; set; }
+
+    public readonly override string ToString()
+    {
+        return $"{Apartment} {House} {Street}, {PostalCode} {City}, {State}, {Country.GetName()}";
+    }
 }

@@ -29,5 +29,5 @@ public class Employee
         set => _phone = (Validator.IsValidPhoneNumber(value)) ? value : throw new FormatException("Invalid phone number.");
     }
 
-    public string Address { get; set; } = string.Empty;
+    public Address Address { get; set; }
 }

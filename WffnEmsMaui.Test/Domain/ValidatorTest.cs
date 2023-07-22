@@ -1,6 +1,6 @@
 ﻿using WffnEmsMaui.Domain;
 
-namespace WffnEmsMaui.Test;
+namespace WffnEmsMaui.Test.Domain;
 
 public class ValidatorTest
 {

@@ -29,6 +29,7 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.100-preview.6.23330.14'
+        cache: true
     - name: Install MAUI Workloads
       if: ${{ steps.cache-dotnet.outputs.cache-hit != 'true' }}
       run: |
@@ -39,7 +40,9 @@ jobs:
         vs-prerelease: true
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build MAUI Windows
-      run: msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -p:RestorePackages=false -p:TargetFramework=net8-windows10.0.22621.0
+    #- name: Build MAUI Windows
+    #  run: msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -p:RestorePackages=false -p:TargetFramework=net8-windows10.0.22621.0
+    - name: Build
+      run: dotnet msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -p:RestorePackages=false -p:TargetFramework=net8-windows10.0.22621.0
     - name: Test
       run: dotnet test --verbosity normal

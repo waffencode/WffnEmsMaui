@@ -24,6 +24,14 @@ public static partial class Validator
         }
     }
 
+    public static bool IsValidPhoneNumber(string number)
+    {
+        return PhoneNumber().IsMatch(number);
+    }
+
     [GeneratedRegex("^([A-Z][a-z]+([-][A-Z])?[a-z]+)$")]
     private static partial Regex Name();
+
+    [GeneratedRegex("^(\\+[0-9]{11,13})$")]
+    private static partial Regex PhoneNumber();
 }

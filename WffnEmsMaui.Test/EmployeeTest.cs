@@ -1,3 +1,4 @@
+using Netizine.Enums;
 using System.Net.Mail;
 using WffnEmsMaui.Domain;
 
@@ -86,6 +87,57 @@ public class EmployeeTest
         Assert.Equal(mail, employee.Email);
     }
 
+    [Fact]
+    public void ShouldReturnValidPhoneNumber()
+    {
+        const string number = "+79008001010";
+        Employee employee = new()
+        {
+            Phone = number
+        };
+
+        Assert.Equal(number, employee.Phone);
+    }
+
+    [Fact]
+    public void ShouldAcceptValidPhoneNumber()
+    {
+        Employee employee = new();
+        var exception = Record.Exception(() => ChangeEmployeePhoneNumber(employee, "+79008001010"));
+        Assert.Null(exception);
+    }
+
+    [Fact]
+    public void ShouldThrowExceptionOnInvalidPhoneNumber()
+    {
+        Employee employee = new();
+        var testNumbers = new string[4] { "+79008001f1", "79008001010", "+7900800101", "+79008001010798" };
+
+        foreach (var number in testNumbers)
+        {
+            var exception = Record.Exception(() => ChangeEmployeePhoneNumber(employee, number));
+            Assert.NotNull(exception);
+        }
+    }
+
+    [Fact]
+    public void ShouldAcceptValidAddress()
+    {
+        Address address = new()
+        {
+            Country = Country.UnitedStatesOfAmerica,
+            State = "California",
+            City = "Los Angeles",
+            PostalCode = "000000",
+            Street = "Example st.",
+            House = "0",
+            Apartment = "0"
+        };
+        Employee employee = new();
+        employee.Address = address;
+        Assert.Equal(address, employee.Address);
+    }
+
     private static void ChangeEmployeeName(Employee employee, string name)
     {
         employee.Name = name;
@@ -94,5 +146,10 @@ public class EmployeeTest
     private static void ChangeEmployeeSurname(Employee employee, string surname)
     {
         employee.Surname = surname;
+    }
+
+    private static void ChangeEmployeePhoneNumber(Employee employee, string number)
+    {
+        employee.Phone = number;
     }
 }

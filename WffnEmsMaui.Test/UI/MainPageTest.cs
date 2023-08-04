@@ -14,5 +14,6 @@ public class MainPageTest
         var button = mainPage.FindElementByAccessibilityId("CounterBtn");
         button.Click();
         Assert.Equal("Clicked 1 time", button.Text);
+        mainPage.CloseApp();
     }
 }

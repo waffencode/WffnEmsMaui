@@ -2,7 +2,7 @@ using Netizine.Enums;
 using System.Net.Mail;
 using WffnEmsMaui.Domain;
 
-namespace WffnEmsMaui.Test;
+namespace WffnEmsMaui.Test.Domain;
 
 public class EmployeeTest
 {
@@ -78,7 +78,7 @@ public class EmployeeTest
     [Fact]
     public void ShouldReturnValidEmail()
     {
-        
+
         MailAddress mail = new("example@example.com");
         Employee employee = new()
         {

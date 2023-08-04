@@ -12,7 +12,7 @@
 		<ApplicationTitle>WffnEmsMaui</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.wffnemsmaui</ApplicationId>
+		<ApplicationId>WffnEmsMaui</ApplicationId>
 		<ApplicationIdGuid>35aa53ec-81b4-4442-af4e-db6f33853969</ApplicationIdGuid>
 
 		<!-- Versions -->

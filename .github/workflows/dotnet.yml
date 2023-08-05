@@ -50,7 +50,7 @@ jobs:
     - name: Publish
       run: dotnet publish WffnEmsMaui\WffnEmsMaui.csproj -f net8-windows10.0.22621.0 -c Debug
     - name: Install Cert
-      run: certmgr /add /c WffnEmsMaui\bin\Debug\net8-windows10.0.22621.0\win10-x64\AppPackages\WffnEmsMaui_1.0.0.1_Debug_Test\WffnEmsMaui_1.0.0.1_x64_Debug.cer /s /r localMachine root
+      run: certmgr /add /c WffnEmsMaui\bin\Debug\net8-windows10.0.22621.0\win10-x64\AppPackages\WffnEmsMaui_1.0.0.1_Debug_Test\WffnEmsMaui_1.0.0.1_x64_Debug.cer /s /r TrustedPeople root
     - name: Install Package
       run: powershell Add-AppPackage -path WffnEmsMaui\bin\Debug\net8-windows10.0.22621.0\win10-x64\AppPackages\WffnEmsMaui_1.0.0.1_Debug_Test\WffnEmsMaui_1.0.0.1_x64_Debug.msix
     #- name: Upload Build Artifacts

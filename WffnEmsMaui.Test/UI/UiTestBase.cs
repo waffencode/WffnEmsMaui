@@ -10,7 +10,7 @@ public abstract class UiTestBase : IDisposable
     protected UiTestBase()
     {
         DesiredCapabilities appCapabilities = new();
-        appCapabilities.SetCapability("app", "35aa53ec-81b4-4442-af4e-db6f33853969_9zz4h110yvjzm!App");
+        appCapabilities.SetCapability("app", "35aa53ec-81b4-4442-af4e-db6f33853969_agc50t4gbzpde!App");
         Driver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723"), appCapabilities);
     }
 

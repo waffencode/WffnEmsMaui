@@ -51,10 +51,6 @@ jobs:
       run: dotnet publish WffnEmsMaui\WffnEmsMaui.csproj -f net8-windows10.0.22621.0 -c Debug
     - name: Install Cert
       run: certutil -addstore "TrustedPeople" WffnEmsMaui\bin\Debug\net8-windows10.0.22621.0\win10-x64\AppPackages\WffnEmsMaui_1.0.0.1_Debug_Test\WffnEmsMaui_1.0.0.1_x64_Debug.cer
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        path: .\**\AppPackages\**\*.*
     - name: Install Dependencies
       run: powershell Add-AppPackage -path WffnEmsMaui\bin\Debug\net8-windows10.0.22621.0\win10-x64\AppPackages\WffnEmsMaui_1.0.0.1_Debug_Test\Dependencies\x64\Microsoft.WindowsAppRuntime.1.3.msix
     - name: Install Package
@@ -64,4 +60,5 @@ jobs:
     - name: Test & start WinAppDriver
       run: |
         Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
+        powershell start shell:AppsFolder\35aa53ec-81b4-4442-af4e-db6f33853969_agc50t4gbzpde!App
         dotnet test --verbosity normal

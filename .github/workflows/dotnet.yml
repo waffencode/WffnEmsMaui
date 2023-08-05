@@ -33,6 +33,12 @@ jobs:
       if: ${{ steps.cache-dotnet.outputs.cache-hit != 'true' }}
       run: |
         dotnet workload install maui-windows --ignore-failed-sources
+    - name: Decrypt PFX File
+      run: |
+        echo "${{ secrets.WINDOWS_PFX_FILE }}" > cert.pfx.asc
+        certutil -decode cert.pfx.asc cert.pfx
+    - name: Add Cert to Store
+      run: certutil -user -q -p ${{ secrets.WINDOWS_PFX_PASSWORD }} -importpfx cert.pfx NoRoot
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
       with:
@@ -40,7 +46,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -p:RestorePackages=false -p:TargetFramework=net8-windows10.0.22621.0
+      run: dotnet msbuild WffnEmsMaui\WffnEmsMaui.csproj -r -c Debug -p:RestorePackages=false -p:TargetFramework=net8-windows10.0.22621.0 /p:GenerateAppxPackageOnBuild=true /p:AppxPackageSigningEnabled=true /p:PackageCertificateThumbprint="${{ secrets.WINDOWS_PFX_THUMBPRINT }}"
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        path: .\**\AppPackages\**\*.*
     - name: Test & start WinAppDriver
       run: |
         Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"

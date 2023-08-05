@@ -60,5 +60,5 @@ jobs:
     - name: Test & start WinAppDriver
       run: |
         Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
-        powershell start shell:AppsFolder\35aa53ec-81b4-4442-af4e-db6f33853969_agc50t4gbzpde!App
+        Start-Process -FilePath shell:AppsFolder\35aa53ec-81b4-4442-af4e-db6f33853969_agc50t4gbzpde!App
         dotnet test --verbosity normal
